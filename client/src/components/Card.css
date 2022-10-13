@@ -1,0 +1,16 @@
+.cardDiv{
+    height: 200px;
+    width: 200px;
+    background-color: blue;
+    margin: 5px;
+    display: flexbox;
+}
+
+.cardDiv img{
+    width: 60%;
+    height: 60%;
+}
+
+.cardDiv span{
+    padding: 5px;
+}

@@ -19,10 +19,17 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const colors = require('colors');
+const {getTypes} = require('./src/routes/functions');
+const {Type} = require('./src/db');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
+  server.listen(3001, async() => {
+    //cargo los types a la base de datos apenas inicio el servidor
+    let types = await getTypes();
+    await Type.bulkCreate(types);
+    console.log('TYPES CARGADOS AL INICIAR MI SERVIDOR DESDE ARCHIVO: api/index'.magenta);
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });

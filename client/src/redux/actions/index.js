@@ -11,8 +11,6 @@ export const getPokemons = ()=>{
             .then(json => json)
             .catch(err => console.log(err));
         
-        
-
         let detail = Promise.all(pokemons.map(async (p) =>{
             let urlToQuery;
             if(!p.url) urlToQuery ='/' + p.id;

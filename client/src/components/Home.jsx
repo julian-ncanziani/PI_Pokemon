@@ -10,16 +10,18 @@ export function Home(){
 
     const pokemons = useSelector(state => state.pokemons);
     const [listPokemons, setListPokemons] = useState([]);
-    const [typeFilter, setTypeFilter] = useState('');
+    const [typeFilter, setTypeFilter] = useState('none');
+    const [sourceFilter, setSourceFilter] = useState('none');
+    const [orderBy, setOrderBy] = useState('none');
 
-    function filterByType(){
-        let arr = [];
-        if(typeFilter === 'none') return arr = pokemons;
-        arr = pokemons.filter(p => {
+    function filterByType(array){
+        let arrFilter = [];
+        if(typeFilter === 'none') return arrFilter = array;
+        arrFilter = array.filter(p => {
             let belongsTo = false;
             if(!p.isCreated){
                 p.types.map(t=>{
-                    console.log(t, typeFilter, t=== typeFilter);
+                    //console.log(t, typeFilter, t=== typeFilter);
                    if(t === typeFilter) belongsTo = true; 
                 });
             }if(p.isCreated){
@@ -29,24 +31,42 @@ export function Home(){
             }
             return belongsTo;
         })
-        return arr;
+        return arrFilter;
     };
     
+    function filterBySource(array){
+        if(sourceFilter === 'none') return array;
+        let arrFilter = array.filter(p =>{
+            if(sourceFilter === 'db' && p.isCreated) return true;
+            if(sourceFilter === 'api' && !p.isCreated) return true;
+        });
+        return arrFilter;
+    };
+
+    function handleFilters(){
+        let arr = pokemons;
+        arr = filterBySource(arr);
+        arr = filterByType(arr);
+        return arr;
+    }
+
     useEffect(()=>{//cuando se carguen pokenos al estado global, los copio al estado local de Home
         setListPokemons(pokemons);
     },[pokemons]);
     
-    useEffect(()=>{
-        
-        setListPokemons(filterByType());
-    },[typeFilter]);
-    console.log(pokemons);
+    useEffect(()=>{//manejo filtros
+        setListPokemons(handleFilters());
+    },[typeFilter, sourceFilter, orderBy]);
     
+    console.log(pokemons);
     
     return(
         <div>
             <SearchBar></SearchBar>
-            <FilterBar setTypeFilter={setTypeFilter}></FilterBar>
+            <FilterBar 
+                setTypeFilter={setTypeFilter} 
+                setSourceFilter={setSourceFilter}
+                setOrderBy={setOrderBy}></FilterBar>
             {listPokemons.length === 0 ? <></> : <Cards listPokemons={listPokemons}></Cards>}
         </div>
     );

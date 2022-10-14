@@ -5,7 +5,8 @@ import './Cards.css';
 export  function Cards({listPokemons}){
     return(
         <div className='cardsDiv'>
-            {listPokemons.map((p, index) =>{
+            {listPokemons[0]['error'] ? <div className='errorDiv'>Pokemon not found</div> : 
+            listPokemons.map((p, index) =>{
                 return <Card
                 key={index}
                 img={p.img}

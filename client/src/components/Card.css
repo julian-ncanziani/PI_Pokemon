@@ -1,16 +1,28 @@
+
 .cardDiv{
-    height: 200px;
+    height: auto;
     width: 200px;
-    background-color: blue;
     margin: 5px;
-    display: flexbox;
+    display: flex;
+    flex-direction: column;
+    border-style: ridge;
 }
 
 .cardDiv img{
-    width: 60%;
-    height: 60%;
+    width: 70%;
+    height: 70%;
+    margin: auto;
 }
 
 .cardDiv span{
     padding: 5px;
+}
+
+.cardDiv label{
+    margin: 5px;
+}
+
+.cardDiv h2{
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

@@ -3,3 +3,10 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.cardsDiv .errorDiv{
+    background-color: aqua;
+    margin: auto;
+    margin-top: 10%;
+    font-size: 30px;
+}

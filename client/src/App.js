@@ -1,11 +1,17 @@
 import React from 'react';
 import './App.css';
-import { LandingPage } from './components/LandingPage';
-import { Home } from './components/Home';
 import {Route, Link, Switch} from 'react-router-dom';
-import { getPokemons } from './redux/actions';
 import {useDispatch} from 'react-redux';
 import { useEffect } from 'react';
+//actions
+import { getPokemons, getTypes } from './redux/actions';
+//------
+//componentes
+import { LandingPage } from './components/LandingPage';
+import { Home } from './components/Home';
+//-----------
+
+
 function App() {
 
   const dispatch = useDispatch();
@@ -13,6 +19,7 @@ function App() {
   //cargo pokemons al cagar App
   useEffect(()=>{
     dispatch(getPokemons());
+    dispatch(getTypes());
   },[]);
   
   return (
@@ -20,7 +27,6 @@ function App() {
       <Switch>
         <Route  exact path='/' component={() => <LandingPage/>}/>
         <Route  path='/home' component={()=> <Home/>}/>
-        <Route/>
       </Switch>
     </div>
   );

@@ -38,7 +38,7 @@ router.get('/pokemons', async (req, res)=>{
 
     if(!name){
         try {
-            let pokemons = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=30')//puedo cambiar el limite de pokemons desde el fetch
+            let pokemons = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=60')//puedo cambiar el limite de pokemons desde el fetch
                 .then(data => data.data.results);
             let pokeDB = await Pokemon.findAll({include: [{model: Type}]});
             pokemons = [...pokeDB, ...pokemons]

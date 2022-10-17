@@ -28,10 +28,11 @@ export function FilterBar({setTypeFilter, setSourceFilter, setOrderBy}){
                 <option value="none">-- Select --</option>
                 <optgroup label='Stats'>
                     <option value="atk">Attack</option>
+                    <option value="defense">Defense</option>
                 </optgroup>
                 <optgroup label='Name'>
-                    <option value="descend">Descend</option>
-                    <option value="ascend">Ascend</option>
+                    <option value="ascend">A-Z</option>
+                    <option value="descend">Z-A</option>
                 </optgroup>
             </select>
         </div>

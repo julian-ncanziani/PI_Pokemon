@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Cards } from './Cards';
 import { SearchBar } from './SearchBar';
 import { FilterBar } from './FilterBar';
+import { PaginationBar } from './PaginationBar';
 
 export function Home(){
 
@@ -13,6 +14,10 @@ export function Home(){
     const [typeFilter, setTypeFilter] = useState('none');
     const [sourceFilter, setSourceFilter] = useState('none');
     const [orderBy, setOrderBy] = useState('none');
+    const [pagination, setPagination] = useState({
+        page: 1,
+        maxPages: 0
+    });
 
     function filterByType(array){
         let arrFilter = [];
@@ -43,31 +48,71 @@ export function Home(){
         return arrFilter;
     };
 
-    function handleFilters(){
-        let arr = pokemons;
+    function orderPokemons(array){
+        if(orderBy === 'none') return array;
+        if(orderBy === 'ascend') {
+            return [...array].sort(function(a, b){
+                if(a.name > b.name) return 1;
+                if(a.name < b.name) return -1;
+                return 0;
+            });
+        }
+        if(orderBy === 'descend'){
+            return [...array].sort(function(a, b){
+                if(a.name < b.name) return 1;
+                if(a.name >b.name) return -1;
+                return 0;
+            });
+        }
+        if(orderBy === 'atk'){
+            return[...array].sort(function(a, b){
+                if(a.stats[1].value > b.stats[1].value) return -1;
+                if(a.stats[1].value < b.stats[1].value) return 1;
+                return 0;
+            });
+        }
+        if(orderBy === 'defense'){
+            return[...array].sort(function(a, b){
+                if(a.stats[2].value > b.stats[2].value) return -1;
+                if(a.stats[2].value < b.stats[2].value) return 1;
+                return 0;
+            });
+        }
+        return array;
+    };
+       
+
+    function handleFilters(arr){
         arr = filterBySource(arr);
         arr = filterByType(arr);
+        arr = orderPokemons(arr);
+        setPagination({...pagination, page: 1});
         return arr;
     }
 
     useEffect(()=>{//cuando se carguen pokenos al estado global, los copio al estado local de Home
         setListPokemons(pokemons);
     },[pokemons]);
+
+    useEffect(()=>{
+        setPagination({...pagination, maxPages: Math.ceil(listPokemons.length/12)});
+    },[listPokemons]);
     
     useEffect(()=>{//manejo filtros
-        setListPokemons(handleFilters());
+       setListPokemons(handleFilters(pokemons));
     },[typeFilter, sourceFilter, orderBy]);
     
-    console.log(pokemons);
+    
     
     return(
         <div>
             <SearchBar></SearchBar>
+            <PaginationBar pagination={pagination} setPagination={setPagination}></PaginationBar>
             <FilterBar 
                 setTypeFilter={setTypeFilter} 
                 setSourceFilter={setSourceFilter}
                 setOrderBy={setOrderBy}></FilterBar>
-            {listPokemons.length === 0 ? <></> : <Cards listPokemons={listPokemons}></Cards>}
+            {listPokemons.length === 0 ? <></> : <Cards page={pagination.page} listPokemons={listPokemons}></Cards>}
         </div>
     );
 };

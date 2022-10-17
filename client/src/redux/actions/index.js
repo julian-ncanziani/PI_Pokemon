@@ -19,7 +19,31 @@ export const getPokemons = ()=>{
                 .then(data => data.json())
                 .then(json => json)
                 .catch(err => console.log(err));
-        })).then(data => dispatch({type: GET_POKEMONS, payload: data}));
+        })).then(data => {
+            let normArr = data.map(p =>{
+                if(p.isCreated){
+                    let normalizeInfo = {
+                        id:p.id,
+                        height: p.height,
+                        img: p.img,
+                        name: p.name,
+                        stats: [
+                            {name: 'hp', value: p.hp}, 
+                            {name: 'attack', value: p.attack},
+                            {name: 'defense', value: p.defense},
+                            {name: 'special-attack', value: 0},
+                            {name: 'special-defense', value: 0},
+                            {name: 'speed', value: p.speed}],
+                        types: p.types,
+                        weight: p.weight,
+                        isCreated: p.isCreated
+                    }
+                    return normalizeInfo;
+                }else{
+                    return p
+                }
+            });
+            dispatch({type: GET_POKEMONS, payload: normArr})});
     }
 };
 

@@ -8,22 +8,28 @@ export function PokemonDetail({listPokemons}){
     console.log(pokemon);
 
     return(
-        <div>
+        <div className='detailDiv'>
             {!pokemon ? <></> :
-            [<h2>{pokemon.name}</h2>,
-            <img src={pokemon.img} alt="" />,
-            <ul>Stats:
-                <li>height: {pokemon.height}</li>
-                <li>weight: {pokemon.weight}</li>
-                <li>Hp: {pokemon.stats[0].value}</li>
-                <li>Atk: {pokemon.stats[1].value}</li>
-                <li>Def: {pokemon.stats[2].value}</li>
-                <li>Speed: {pokemon.stats[5].value}</li>
-            </ul>]}
-            {pokemon.types.map((t, index) => {
-                if(!t.name) return <span key={index}> {t} </span>;
-                else return <span key={index}> {t.name} </span>
-                })}
+            [
+                <span>
+                    <img src={pokemon.img} alt="" />
+                </span>,
+                <span>
+                    <h2>{pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h2>,
+                    <ul>
+                        <h3>Stats:</h3>
+                        <li>-<h6>Height(cm):</h6>{pokemon.height}</li>
+                        <li>-<h6>Weight(kg):</h6> {pokemon.weight}</li>
+                        <li>-<h6>Hp:</h6> {pokemon.stats[0].value}</li>
+                        <li>-<h6>Atk:</h6> {pokemon.stats[1].value}</li>
+                        <li>-<h6>Def:</h6> {pokemon.stats[2].value}</li>
+                        <li>-<h6>Speed:</h6> {pokemon.stats[5].value}</li>
+                    </ul>
+                    <p>Type: </p>
+                    {pokemon.types.map((t, index) => <label> {t.toUpperCase()} </label>)}
+                </span>
+            ]}
+            
         </div>
     )
 };

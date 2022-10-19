@@ -24,7 +24,7 @@ export function CreationForm({setId}){
         atkErr: 'Ingrese un valor',
         defErr: 'Ingrese un valor',
         speedErr: 'Ingrese un valor',
-        heightErr: 'Ingrese un valor(metros)',
+        heightErr: 'Ingrese un valor(m)',
         weightErr: 'Ingrese un valor(Kg)'
     });
 
@@ -72,7 +72,7 @@ export function CreationForm({setId}){
         }
     };
     
-    console.log(errors);
+    
     
     return(
         <div className='creationFormDiv'>
@@ -127,7 +127,7 @@ export function CreationForm({setId}){
                     else setErrors({...errors, heightErr: ''});
                     setHeight(e.target.value);
                 }}/>
-                {!errors.heightErr ? <label className='validLabel'>Campo Valido</label> : <label>{errors.heigthErr}</label>}
+                {!errors.heightErr ? <label className='validLabel'>Campo Valido</label> : <label>{errors.heightErr}</label>}
 
                 <p>Weight (kg):</p>
                 <input type="number" onChange={e => {

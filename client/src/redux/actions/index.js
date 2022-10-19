@@ -34,7 +34,7 @@ export const getPokemons = ()=>{
                             {name: 'special-attack', value: 0},
                             {name: 'special-defense', value: 0},
                             {name: 'speed', value: p.speed}],
-                        types: p.types,
+                        types: p.types.map(t => t.name),
                         weight: p.weight,
                         isCreated: p.isCreated
                     }
@@ -51,8 +51,30 @@ export const getPokemonByName = (name)=>{
     return async function(dispatch){
         await fetch(`http://localhost:3001/pokemons?name=${name}`)
             .then(data => data.json())
-            .then(json => dispatch({type: GET_POKEMON_BY_NAME, payload: json}))
-            .catch(err => console.log(err));
+            .then(json => {
+                console.log(json);
+                if(json.isCreated){
+                    let pokeDataBase = {
+                        id:json.id,
+                        height: json.height,
+                        img: json.img,
+                        name: json.name,
+                        stats: [
+                            {name: 'hp', value: json.hp}, 
+                            {name: 'attack', value: json.attack},
+                            {name: 'defense', value: json.defense},
+                            {name: 'special-attack', value: 0},
+                            {name: 'special-defense', value: 0},
+                            {name: 'speed', value: json.speed}],
+                        types: json.types.map(t => t.name),
+                        weight: json.weight,
+                        isCreated: json.isCreated
+                    }
+                    dispatch({type: GET_POKEMON_BY_NAME, payload: pokeDataBase})
+                }else{
+                    dispatch({type: GET_POKEMON_BY_NAME, payload: json})
+                }
+            }).catch(err => console.log(err));
     };
 };
 

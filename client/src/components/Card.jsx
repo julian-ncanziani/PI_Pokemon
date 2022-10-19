@@ -10,10 +10,7 @@ export function Card({img, name, types, id}){
             <span>
                 {!types ? <></> : 
                     types.map((t, index) =>{
-                    if(t.name) return <label key={index}>{t.name.toUpperCase()}</label>
-                    else{
-                        return <label key={index}>{t.toUpperCase()}</label>
-                    }
+                        return<label key={index} className={`${t}Label`}>{t.toUpperCase()}</label>
                 })}
             </span>
         </div>

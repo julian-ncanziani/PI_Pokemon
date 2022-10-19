@@ -4,6 +4,12 @@
     flex-wrap: wrap;
     width: 70%;
     margin: auto;
+    font-family: cursive;
+}
+
+.cardsDiv a{
+    text-decoration: none;
+    font-size: larger;
 }
 
 .cardsDiv .errorDiv{
@@ -12,3 +18,4 @@
     margin-top: 10%;
     font-size: 30px;
 }
+

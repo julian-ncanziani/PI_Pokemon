@@ -1,0 +1,45 @@
+.detailDiv{
+    display: flex;
+    flex-direction: row;
+}
+
+.detailDiv span{
+    min-width: 300px;
+}
+
+.detailDiv h3{
+    text-align: left;
+    }
+
+.detailDiv ul{
+   font-family: cursive;
+   
+}
+
+.detailDiv li{
+    font-size: larger;
+    text-align: left;
+    display: flex;
+    font-weight: 600;
+}
+
+.detailDiv h2{
+    font-size: 30px;
+}
+
+.detailDiv h6{
+    display: inline;
+    margin: 0;
+    width: 50%;
+    height: auto;
+    font-size: large;
+}
+
+.detailDiv label, p{
+    margin-left: 40px;
+    font-size: larger;
+    text-align: left;
+    display: flex;
+    font-weight: 700;
+    font-family: cursive;
+}

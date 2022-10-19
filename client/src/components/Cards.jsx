@@ -11,6 +11,7 @@ export  function Cards({listPokemons, page}){
                 if(index > (((page - 1)* 12)-1) && index <= (page*12) - 1){
                     return <Card
                     key={index}
+                    id={p.id}
                     img={p.img}
                     name={p.name}
                     types={p.types}/>

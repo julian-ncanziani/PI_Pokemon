@@ -1,0 +1,81 @@
+.creationFormDiv{
+    background-image: url('https://www.themoviedb.org/t/p/original/y4QjABMUlpwzBl0jlJK9YFE3WoD.jpg');
+    background-size: cover;
+    min-height: 700px;
+    background-position: left;
+}
+
+.creationFormDiv h1{
+    margin: 0px;
+}
+
+.creationFormDiv form{
+    border-style: ridge;
+    border-radius: 5%;
+    background-color: rgba(133, 133, 133, 0.801);
+    height: auto;
+    width: 60%;
+    margin: auto;
+    text-align: left;
+}
+
+.creationFormDiv p{
+    margin-left: 10px;
+    margin-bottom: 0;
+    width: 80%;
+    font-size: larger;
+}
+
+.creationFormDiv input{
+    margin-left: 10px;
+    width: 60%;
+    height: 15px;
+    font-size: large;
+}
+
+.creationFormDiv label{
+    display: block;
+    margin-left: 10px;
+    font-size: larger;
+    color: rgb(190, 39, 39);
+}
+
+label.validLabel{
+    font-size: larger;
+    color: inherit;
+    color:rgb(2, 128, 2);
+}
+
+.creationFormDiv ul{
+   border-style: inset;
+   width: 90%;
+   min-height: 120px;
+   height: fit-content;
+   margin: auto;
+}
+
+.creationFormDiv li{
+    display: inline-block;
+    margin: 10px;
+    font-size: larger;
+    font-weight: 700;
+}
+
+.creationFormDiv li:hover{
+    background-color: rgb(204, 204, 204);
+    border-radius: 5%;
+}
+
+.creationFormDiv select{
+    margin-left: 10px;
+    font-size: larger;
+}
+
+.creationFormDiv button{
+    margin-left: 40%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: auto;
+    height: auto;
+    font-size: larger;
+}

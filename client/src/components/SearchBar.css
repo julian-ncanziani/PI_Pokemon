@@ -1,5 +1,16 @@
 .barDiv{
-    background-color: aqua;
-    margin: 0;
-    height: 100px;
+    margin: 10px;
+}
+
+.barDiv button{
+    font-size: larger;
+}
+
+.barDiv input{
+    width: 200px;
+    height: auto;
+    font-size: larger;
+    margin: 1px;
+    background-color: transparent;
+    color: black;
 }

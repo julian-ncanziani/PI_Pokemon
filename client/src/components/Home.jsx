@@ -1,14 +1,21 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import {Route, Switch, useRouteMatch} from 'react-router-dom';
 //componentes
 import { Cards } from './Cards';
 import { SearchBar } from './SearchBar';
 import { FilterBar } from './FilterBar';
 import { PaginationBar } from './PaginationBar';
+import { PokemonDetail } from './PokemonDetail';
+import { NavBar } from './NavBar';
+import { CreationForm } from './CreationForm';
+import './Home.css';
 
-export function Home(){
+export function Home({setId}){
 
+    
+    let { path, url } = useRouteMatch();
     const pokemons = useSelector(state => state.pokemons);
     const [listPokemons, setListPokemons] = useState([]);
     const [typeFilter, setTypeFilter] = useState('none');
@@ -81,7 +88,6 @@ export function Home(){
         return array;
     };
        
-
     function handleFilters(arr){
         arr = filterBySource(arr);
         arr = filterByType(arr);
@@ -103,16 +109,31 @@ export function Home(){
     },[typeFilter, sourceFilter, orderBy]);
     
     
-    
     return(
-        <div>
-            <SearchBar></SearchBar>
-            <PaginationBar pagination={pagination} setPagination={setPagination}></PaginationBar>
-            <FilterBar 
-                setTypeFilter={setTypeFilter} 
-                setSourceFilter={setSourceFilter}
-                setOrderBy={setOrderBy}></FilterBar>
-            {listPokemons.length === 0 ? <></> : <Cards page={pagination.page} listPokemons={listPokemons}></Cards>}
+        <div className='homeDiv'>
+            <Switch>
+                <Route path={`${path}/creationform`}>
+                    <CreationForm setId={setId}></CreationForm>
+                </Route>
+
+                <Route exact path={`${path}`}>
+                    <NavBar></NavBar>
+                    <SearchBar></SearchBar>
+                    <PaginationBar pagination={pagination} setPagination={setPagination}></PaginationBar>
+                    <FilterBar 
+                        setTypeFilter={setTypeFilter} 
+                        setSourceFilter={setSourceFilter}
+                        setOrderBy={setOrderBy}></FilterBar>
+                    {listPokemons.length === 0 ? <></> : 
+                    <Cards page={pagination.page} listPokemons={listPokemons}></Cards>}
+                </Route>
+
+                <Route path={`${path}/detail/:id`}>
+                    <NavBar></NavBar>
+                    <PokemonDetail listPokemons={listPokemons}></PokemonDetail>
+                </Route>
+                <Route path={`${path}/form`}></Route>
+            </Switch>
         </div>
     );
 };

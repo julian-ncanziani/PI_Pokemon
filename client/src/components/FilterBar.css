@@ -1,0 +1,19 @@
+.filterBarDiv{
+    margin: 5px;
+    font-size: larger;
+}
+
+.filterBarDiv select{
+    margin-right: 20px;
+    font-size: large;
+    background-color: transparent;
+}
+
+.filterBarDiv option, optgroup{
+    background-color: rgba(212, 212, 211, 0.459);
+    
+    
+}
+
+
+

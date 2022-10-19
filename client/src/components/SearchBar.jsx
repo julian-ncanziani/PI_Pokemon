@@ -17,7 +17,6 @@ export function SearchBar(){
 
     return(
         <div className='barDiv'>
-            
             <div>
                 <button onClick={e=>handleClick()}>Buscar</button> 
                 <input type="text" onChange={e=>setInput(e.target.value)}/>

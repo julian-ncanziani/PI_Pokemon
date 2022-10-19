@@ -15,7 +15,7 @@ export function PaginationBar({pagination, setPagination}){
         setPagination({...pagination, page: parseInt(value)});
     };
 
-    console.log(pagination);
+    
     return(
         <div className='paginationDiv'>
             <button  onClick={e => backPage()}>Back</button>

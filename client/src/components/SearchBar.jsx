@@ -5,7 +5,7 @@ import { getPokemonByName, getPokemons } from '../redux/actions';
 import { useDispatch } from 'react-redux';
 
 
-export function SearchBar(){
+export function SearchBar({pagination, setPagination}){
 
     const [input, setInput] = useState('');
     const dispatch = useDispatch();
@@ -13,6 +13,7 @@ export function SearchBar(){
     function handleClick(){
         if(input) dispatch(getPokemonByName(input));
         if(!input) dispatch(getPokemons());
+        setPagination({...pagination, page: 1});
     };
 
     return(

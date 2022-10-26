@@ -7,9 +7,12 @@
     height: 700px;
 }
 
+
+
 .landingPageDiv span{
     margin-top: 20%;
-    
+    background-color: rgba(167, 166, 166, 0.658);
+    height: 40%;
 }
 
 .landingPageDiv a{
@@ -20,15 +23,19 @@
     border-width: 3px;
     background-color: rgba(105, 253, 18, 0.904);
     color: black;
+    margin:auto;
+    width: 30%;
 }
 
 .landingPageDiv a:hover{
-    border-style: dashed;
-    background-color: rgba(197, 151, 0, 0.904);;
+    background-color: rgba(53, 139, 3, 0.904);
 }
 
 .landingPageDiv h1{
     margin-bottom: 50px;
+    font-size: 40px;
+    font-family: cursive;
+    color: rgba(0, 0, 0, 0.897);
 }
 
 

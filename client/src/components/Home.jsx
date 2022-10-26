@@ -118,7 +118,7 @@ export function Home({setId}){
 
                 <Route exact path={`${path}`}>
                     <NavBar></NavBar>
-                    <SearchBar></SearchBar>
+                    <SearchBar pagination={pagination} setPagination={setPagination}></SearchBar>
                     <PaginationBar pagination={pagination} setPagination={setPagination}></PaginationBar>
                     <FilterBar 
                         setTypeFilter={setTypeFilter} 

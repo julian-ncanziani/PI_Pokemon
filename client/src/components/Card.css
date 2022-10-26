@@ -5,8 +5,11 @@
     margin: 5px;
     display: flex;
     flex-direction: column;
-    border-style: ridge;
+    border-radius: 2%;
+    background-color: rgba(175, 175, 175, 0.541);
 }
+
+
 
 .cardDiv img{
     width: 70%;

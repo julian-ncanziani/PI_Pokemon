@@ -43,3 +43,95 @@
     font-weight: 700;
     font-family: cursive;
 }
+
+.detailDiv label{
+    margin-left: 40px;
+    border-radius: 5%;
+    padding: 2px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: medium;
+    width: 70px;
+}
+
+.detailDiv label.poisonLabel{
+    color: beige;
+    background-color: rgb(179, 15, 255);
+    border-radius: 5%;
+}
+
+.detailDiv label.grassLabel{
+    background-color: rgb(44, 231, 38);
+    border-radius: 5%;
+}
+
+.detailDiv label.fireLabel{
+    color: beige;
+    background-color: rgb(221, 84, 20);
+    border-radius: 5%;
+}
+
+.detailDiv label.waterLabel, label.iceLabel{
+    color: black;
+    background-color: rgb(35, 183, 194);
+    border-radius: 5%;
+}
+
+.detailDiv label.bugLabel{
+    color: black;
+    background-color: rgb(42, 216, 115);
+    border-radius: 5%;
+}
+
+.detailDiv label.groundLabel{
+    color: beige;
+    background-color: rgb(121, 73, 2);
+    border-radius: 5%;
+}
+
+.detailDiv label.fairyLabel{
+    color: black;
+    background-color: rgb(255, 133, 184);
+    border-radius: 5%;
+}
+
+.detailDiv label.electricLabel{
+    color: black;
+    background-color: rgb(235, 238, 44);
+    border-radius: 5%;
+}
+
+.detailDiv label.normalLabel, label.flyingLabel, label.fightingLabel{
+    color: black;
+    background-color: rgb(208, 209, 208);
+    border-radius: 5%;
+}
+
+.detailDiv label.psychicLabel{
+    color: black;
+    background-color: rgb(219, 45, 118);
+    border-radius: 5%;
+}
+
+.detailDiv label.dragonLabel{
+    color: black;
+    background-color: rgb(124, 255, 200);
+    border-radius: 5%;
+}
+
+.detailDiv label.rockLabel{
+    color: black;
+    background-color: rgb(151, 151, 151);
+    border-radius: 5%;
+}
+
+.detailDiv label.ghostLabel{
+    color: beige;
+    background-color: rgba(175, 59, 190, 0.562);
+    border-radius: 5%;
+}
+
+.detailDiv label.steelLabel{
+    color: black;
+    background-color: rgb(207, 207, 207);
+    border-radius: 5%;
+}

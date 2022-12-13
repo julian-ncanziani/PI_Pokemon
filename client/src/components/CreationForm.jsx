@@ -67,6 +67,16 @@ export function CreationForm({setId}){
                     .then(json => alert(JSON.stringify(json)))
                     .catch(err => alert(err.message));
                     dispatch(getPokemons());
+                    setTypesForm([]);
+                    setAtk('');
+                    setDef('');
+                    setHeight('');
+                    setWeight('');
+                    setHp('');
+                    setImg('');
+                    setName('');
+                    setSpeed('');
+
         }else{
             alert('Datos incorrectos');
         }
@@ -138,7 +148,7 @@ export function CreationForm({setId}){
                 {!errors.weightErr ? <label className='validLabel'>Campo Valido</label> : <label>{errors.weightErr}</label>}
 
                 <p>Img (url):</p>
-                <input type="text" />
+                <input type="text" onChange={e =>setImg(e.target.value)}/>
 
                 <p>Types</p>
                 <select 

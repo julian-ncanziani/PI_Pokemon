@@ -2,6 +2,7 @@ const { Router } = require('express');
 const axios = require('axios');
 const {Pokemon, Type, PokemonType} = require('../db');
 const {getTypes} = require('./functions');
+const {Op} = require('sequelize');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -15,7 +16,7 @@ router.get('/pokemons', async (req, res)=>{
     
     if(name) {
         try {
-            let pokeDataBase = await Pokemon.findOne({where: {name : name}, include: [{model: Type}]});
+            let pokeDataBase = await Pokemon.findOne({where: {name : {[Op.like]: `%${name}%`}}, include: [{model: Type}]});
             if(pokeDataBase) return res.status(200).json(pokeDataBase);
             let pokemonInfo = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
                 .then(data => data.data);

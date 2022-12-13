@@ -26,7 +26,7 @@ export function PokemonDetail({listPokemons}){
                         <li>-<h6>Speed:</h6> {pokemon.stats[5].value}</li>
                     </ul>
                     <p>Type: </p>
-                    {pokemon.types.map((t, index) => <label> {t.toUpperCase()} </label>)}
+                    {pokemon.types.map((t, index) => <label className={`${t}Label`}>{t.toUpperCase()} </label>)}
                 </span>
             ]}
             

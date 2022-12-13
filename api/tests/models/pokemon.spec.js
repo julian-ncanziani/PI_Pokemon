@@ -6,7 +6,7 @@ xdescribe('Pokemon model', () => {
     .catch((err) => {
       console.error('Unable to connect to the database:', err);
     }));
-  describe('Validators', () => {
+  xdescribe('Validators', () => {
     beforeEach(() => Pokemon.sync({ force: true }));
     describe('name', () => {
       it('should throw an error if name is null', (done) => {
@@ -15,7 +15,7 @@ xdescribe('Pokemon model', () => {
           .catch(() => done());
       });
       it('should work when its a valid name', () => {
-        Pokemon.create({ name: 'Pikachu' });
+        Pokemon.create({ name: 'pepe' });
       });
     });
   });

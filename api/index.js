@@ -22,10 +22,10 @@ const { conn } = require('./src/db.js');
 const colors = require('colors');
 const {getTypes} = require('./src/routes/functions');
 const {Type} = require('./src/db');
-
+const {PORT} = process.env
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, async() => {
+  server.listen(PORT, async() => {
     //cargo los types a la base de datos apenas inicio el servidor
     let types = await getTypes();
     await Type.bulkCreate(types);

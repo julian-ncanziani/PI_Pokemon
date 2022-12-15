@@ -10,7 +10,7 @@ export const getPokemons = ()=>{
             .then(data => data.json())
             .then(json => json)
             .catch(err => console.log(err));
-        
+        if(!pokemons) return;
         let detail = Promise.all(pokemons.map(async (p) =>{
             let urlToQuery;
             if(!p.url) urlToQuery ='/' + p.id;
@@ -43,8 +43,9 @@ export const getPokemons = ()=>{
                     return p
                 }
             });
-            dispatch({type: GET_POKEMONS, payload: normArr})});
-    }
+            dispatch({type: GET_POKEMONS, payload: normArr})})
+            .catch(err=>console.log(err));
+    };
 };
 
 export const getPokemonByName = (name)=>{

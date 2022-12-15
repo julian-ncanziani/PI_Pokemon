@@ -110,4 +110,12 @@ router.post('/pokemons', async (req, res)=>{
     }
 });
 
+router('/test', (req, res)=>{
+    try {
+        res.status(200).json({Conected: 'Ok'})
+    } catch (error) {
+        res.status(404).json({error: error.message});
+    }
+});
+
 module.exports = router;

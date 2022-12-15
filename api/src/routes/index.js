@@ -110,7 +110,7 @@ router.post('/pokemons', async (req, res)=>{
     }
 });
 
-router('/test', (req, res)=>{
+router.get('/test',async (req, res)=>{
     try {
         res.status(200).json({Conected: 'Ok'})
     } catch (error) {

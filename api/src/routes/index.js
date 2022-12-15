@@ -11,7 +11,7 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get('/pokemones', async (req, res)=>{
+router.get('/pokemons', async (req, res)=>{
     let {name} = req.query;
     
     if(name) {

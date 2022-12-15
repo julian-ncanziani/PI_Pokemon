@@ -112,7 +112,9 @@ router.post('/pokemons', async (req, res)=>{
 
 router.get('/test',async (req, res)=>{
     try {
-        res.status(200).json({Conected: 'Ok'})
+        let pokemons = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=5')//puedo cambiar el limite de pokemons desde el fetch
+                .then(data => data.data.results);
+        res.status(200).json({Conected: 'Ok', pokemons: pokemons});
     } catch (error) {
         res.status(404).json({error: error.message});
     }

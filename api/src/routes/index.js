@@ -125,17 +125,18 @@ router.get('/test',async (req, res)=>{
                         name: data.name,
                         weight: data.weight,
                         height: data.height,
-                        /* ...data.stats.reduce((acc, stat)=> {
+                        ...data.stats.reduce((acc, stat)=> {
                             console.log('--------------');
                             console.log(acc);
                             acc[stat.stat.name] = stat.base_stat;
                             return acc;
-                        },{}) */
+                        },{})
                     }
                 });
         }));
         res.status(200).json({conected: 'Ok',pokemons: pokemonsFilteredArr});
     } catch (error) {
+        console.log(error);
         res.status(404).json({error: error.message});
     }
 });

@@ -134,8 +134,7 @@ router.get('/test',async (req, res)=>{
                     }
                 });
         }));
-        
-        res.status(200).json(pokemonsFilteredArr);
+        res.status(200).json({conected: 'Ok',pokemons: pokemonsFilteredArr});
     } catch (error) {
         res.status(404).json({error: error.message});
     }

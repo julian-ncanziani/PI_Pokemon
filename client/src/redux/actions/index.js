@@ -1,5 +1,4 @@
 import { bindActionCreators } from "redux";//investigar esto
-
 export const GET_POKEMONS = 'GET_POKEMONS';
 export const GET_POKEMON_BY_NAME = 'GET_POKEMON_BY_NAME';
 export const GET_TYPES = 'GET_TYPES';

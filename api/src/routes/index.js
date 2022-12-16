@@ -111,13 +111,31 @@ router.post('/pokemons', async (req, res)=>{
 });
 
 router.get('/test',async (req, res)=>{
+    
     try {
-        let pokemons = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=5')//puedo cambiar el limite de pokemons desde el fetch
+        let pokemons = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=2')//puedo cambiar el limite de pokemons desde el fetch
                 .then(data => data.data.results);
-        let pokemonsArr = Promise.all(pokemons.map(async (poke) => {
-            await axios.get(poke.url);
+                
+        let pokemonsFilteredArr = await Promise.all(pokemons.map(async (poke)=>{
+            return await axios.get(poke.url)
+                .then(response => response.data)
+                .then(data => {
+                    return {
+                        id: data.id,
+                        name: data.name,
+                        weight: data.weight,
+                        height: data.height,
+                        ...data.stats.reduce((acc, stat)=> {
+                            console.log('--------------');
+                            console.log(acc);
+                            acc[stat.stat.name] = stat.base_stat;
+                            return acc;
+                        },{})
+                    }
+                });
         }));
-        res.status(200).json({Conected: 'Ok', pokemons: pokemonsArr});
+        
+        res.status(200).json(pokemonsFilteredArr);
     } catch (error) {
         res.status(404).json({error: error.message});
     }

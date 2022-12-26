@@ -46,7 +46,7 @@ export function CreationForm({setId}){
         event.preventDefault();
         if(errors.nameErr === '' && errors.atkErr === '' && errors.defErr === '' && errors.heightErr === '' 
         && errors.hpErr === '' && errors.weightErr === '') {
-                    await fetch('http://localhost:3001/pokemons', {
+                    await fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/pokemons`, {
                         method: 'POST',
                         headers: {
                             "Content-Type": "Application/json"

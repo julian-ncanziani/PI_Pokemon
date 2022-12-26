@@ -22,7 +22,7 @@ const { conn } = require('./src/db.js');
 const colors = require('colors');
 const {getTypes} = require('./src/routes/functions');
 const {Type} = require('./src/db');
-const {PORT} = process.env
+const {PORT} = process.env;
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   server.listen(PORT, async() => {

@@ -6,7 +6,10 @@ export const GET_TYPES = 'GET_TYPES';
 
 export const getPokemons = ()=>{
     return async function(dispatch){
-        let pokemons = await fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/pokemons`)
+        let pokemons = await fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/pokemons`,
+        {
+            mode: 'no-cors'
+        })
             .then(data => data.json())
             .then(json => json)
             .catch(err => console.log(err));

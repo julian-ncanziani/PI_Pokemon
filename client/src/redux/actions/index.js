@@ -84,7 +84,10 @@ export const getPokemonByName = (name)=>{
 
 export const getTypes = ()=>{
     return async function(dispatch){
-        await fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/types`)
+        await fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/types`,
+        {
+            mode: 'no-cors'
+        })
             .then(data => data.json())
             .then(json => dispatch({type: GET_TYPES, payload: json}))
             .catch(err => console.log(err));

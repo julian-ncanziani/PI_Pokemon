@@ -84,7 +84,7 @@ export const getTypes = ()=>{
         await fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/types`,
         {
             headers:{
-                'Access-Control-Allow-Origin':'*'
+                'Access-Control-Allow-Origin':'https://pi-pokemon-blush.vercel.app/'
             }
         })
             .then(data => data.json())

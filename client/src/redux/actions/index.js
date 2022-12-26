@@ -6,7 +6,12 @@ export const GET_TYPES = 'GET_TYPES';
 
 export const getPokemons = ()=>{
     return async function(dispatch){
-        let pokemons = await fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/pokemons`)
+        let pokemons = await fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/pokemons`,
+        {
+            headers:{
+                'Access-Control-Allow-Origin':process.env.REACT_APP_SERVER_URL
+            }
+        })
             .then(data => data.json())
             .then(json => json)
             .catch(err => console.log(err));
@@ -84,7 +89,7 @@ export const getTypes = ()=>{
         await fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/types`,
         {
             headers:{
-                'Access-Control-Allow-Origin':'https://pi-pokemon-blush.vercel.app/'
+                'Access-Control-Allow-Origin':process.env.REACT_APP_SERVER_URL
             }
         })
             .then(data => data.json())
